@@ -1,0 +1,653 @@
+/* Main Stylesheet for Trump Tariff Analysis Website */
+
+/* Base Styles */
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #3498db;
+    --accent-color: #e74c3c;
+    --light-color: #ecf0f1;
+    --dark-color: #2c3e50;
+    --success-color: #2ecc71;
+    --warning-color: #f39c12;
+    --danger-color: #e74c3c;
+    --text-color: #333;
+    --border-radius: 4px;
+    --box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    --transition: all 0.3s ease;
+    --chart-height: 400px; /* Increased from default */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: #f5f7fa;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 15px;
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+a:hover {
+    color: var(--primary-color);
+}
+
+img.responsive-img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Header Styles */
+header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: var(--box-shadow);
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo h1 {
+    font-size: 1.5rem;
+    margin-bottom: 0;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    color: white;
+    padding: 5px 10px;
+    border-radius: var(--border-radius);
+}
+
+nav ul li a:hover, nav ul li a.active {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.mobile-menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.mobile-menu-toggle span {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 2px 0;
+    border-radius: var(--border-radius);
+}
+
+/* Main Content Styles */
+main {
+    padding: 30px 0;
+}
+
+section {
+    display: none;
+    margin-bottom: 30px;
+}
+
+section.active-section {
+    display: block;
+}
+
+section h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--secondary-color);
+    padding-bottom: 10px;
+}
+
+/* Card Styles */
+.card {
+    background-color: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.card h3 {
+    font-size: 1.25rem;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+/* Dashboard Styles */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.market-overview, .top-opportunities {
+    grid-column: span 2;
+}
+
+.market-indices {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.market-index {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    border-radius: var(--border-radius);
+    background-color: var(--light-color);
+    width: 30%;
+}
+
+.index-name {
+    font-weight: 500;
+}
+
+.index-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 5px 0;
+}
+
+.index-change {
+    font-weight: 500;
+}
+
+.market-index.up .index-change {
+    color: var(--success-color);
+}
+
+.market-index.down .index-change {
+    color: var(--danger-color);
+}
+
+.chart-container {
+    margin-top: 15px;
+    border: 1px solid #eee;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    height: var(--chart-height); /* Increased height for better visualization */
+}
+
+.opportunities-list {
+    margin-bottom: 15px;
+}
+
+.opportunity {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.opportunity:last-child {
+    border-bottom: none;
+}
+
+.opportunity .symbol {
+    font-weight: 700;
+    width: 15%;
+}
+
+.opportunity .name {
+    width: 40%;
+}
+
+.opportunity .score {
+    width: 15%;
+    text-align: center;
+    font-weight: 500;
+}
+
+.opportunity .movement {
+    width: 15%;
+    text-align: right;
+    color: var(--success-color);
+    font-weight: 500;
+}
+
+.alerts-list {
+    margin-bottom: 15px;
+}
+
+.alert {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.alert:last-child {
+    border-bottom: none;
+}
+
+.alert.high {
+    border-left: 4px solid var(--danger-color);
+}
+
+.alert.medium {
+    border-left: 4px solid var(--warning-color);
+}
+
+.alert.low {
+    border-left: 4px solid var(--success-color);
+}
+
+.alert-time {
+    width: 20%;
+    font-weight: 500;
+}
+
+.alert-message {
+    width: 80%;
+}
+
+/* Trading Opportunities Styles */
+.filters {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    background-color: white;
+    padding: 15px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+}
+
+.filter-group label {
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.filter-group select, .filter-group input {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+}
+
+.range-value {
+    margin-top: 5px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.opportunities-table {
+    overflow-x: auto;
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th, table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+table th {
+    background-color: var(--light-color);
+    font-weight: 500;
+}
+
+table tbody tr:hover {
+    background-color: rgba(52, 152, 219, 0.05);
+}
+
+.stock-detail {
+    background-color: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    padding: 20px;
+}
+
+.detail-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+}
+
+.detail-chart .chart-container {
+    height: 500px; /* Even taller for stock detail charts */
+}
+
+.info-group {
+    margin-bottom: 20px;
+}
+
+.info-group h4 {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+}
+
+.info-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.info-item:last-child {
+    border-bottom: none;
+}
+
+.info-item .label {
+    font-weight: 500;
+}
+
+/* Market Analysis Styles */
+.analysis-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.analysis-grid .chart-container {
+    height: 450px; /* Taller for analysis charts */
+}
+
+/* Alerts Styles */
+.alerts-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+}
+
+.alert-list {
+    grid-row: span 2;
+}
+
+.alerts-table {
+    overflow-x: auto;
+}
+
+.alerts-table table tbody tr.high {
+    border-left: 4px solid var(--danger-color);
+}
+
+.alerts-table table tbody tr.medium {
+    border-left: 4px solid var(--warning-color);
+}
+
+.alerts-table table tbody tr.low {
+    border-left: 4px solid var(--success-color);
+}
+
+.alert-config-tabs {
+    display: flex;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.tab {
+    padding: 10px 15px;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+}
+
+.tab.active {
+    border-bottom: 2px solid var(--secondary-color);
+    font-weight: 500;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.alert-form .form-group {
+    margin-bottom: 15px;
+}
+
+.alert-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.alert-form input, .alert-form select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+}
+
+.form-group.checkbox {
+    display: flex;
+    align-items: center;
+}
+
+.form-group.checkbox input {
+    width: auto;
+    margin-right: 10px;
+}
+
+.btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.btn.primary {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.btn.primary:hover {
+    background-color: var(--primary-color);
+}
+
+.btn.secondary {
+    background-color: var(--light-color);
+    color: var(--text-color);
+}
+
+.btn.secondary:hover {
+    background-color: #ddd;
+}
+
+/* Settings Styles */
+.settings-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.user-preferences {
+    grid-column: span 2;
+}
+
+.data-management-controls {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.import-container {
+    position: relative;
+}
+
+.import-container input[type="file"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+.persistence-status {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: var(--light-color);
+    border-radius: var(--border-radius);
+}
+
+.resources-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.resource-link {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: var(--light-color);
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+}
+
+.resource-link:hover {
+    background-color: #ddd;
+}
+
+.resource-icon {
+    margin-right: 10px;
+    font-size: 1.25rem;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Footer Styles */
+footer {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+    .dashboard-grid, .analysis-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .market-overview, .top-opportunities {
+        grid-column: span 1;
+    }
+    
+    .detail-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .settings-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    nav ul {
+        display: none;
+    }
+    
+    .mobile-menu-toggle {
+        display: flex;
+    }
+    
+    nav.mobile-active ul {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        background-color: var(--primary-color);
+        padding: 15px;
+    }
+    
+    nav.mobile-active ul li {
+        margin: 10px 0;
+    }
+    
+    .filters {
+        flex-direction: column;
+    }
+    
+    .filter-group {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+    
+    .alerts-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .resources-list {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 576px) {
+    .market-indices {
+        flex-direction: column;
+    }
+    
+    .market-index {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    
+    .data-management-controls {
+        grid-template-columns: 1fr;
+    }
+}

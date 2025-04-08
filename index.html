@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Interactive analysis of Trump tariff impacts on Australian stocks for active trading">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Trump Tariff Impact Analysis</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/mobile-compatibility.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>Trump Tariff Impact Analysis</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#dashboard" class="active">Dashboard</a></li>
+                    <li><a href="#trading-opportunities">Trading Opportunities</a></li>
+                    <li><a href="#market-analysis">Market Analysis</a></li>
+                    <li><a href="#alerts">Alerts</a></li>
+                    <li><a href="#settings">Settings</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="dashboard" class="active-section">
+            <div class="container">
+                <h2>Dashboard</h2>
+                <div class="dashboard-grid">
+                    <div class="card market-overview">
+                        <h3>Market Overview</h3>
+                        <div class="market-indices">
+                            <div class="market-index up">
+                                <span class="index-name">ASX 200</span>
+                                <span class="index-value">7,456.78</span>
+                                <span class="index-change">+1.2%</span>
+                            </div>
+                            <div class="market-index up">
+                                <span class="index-name">S&P 500</span>
+                                <span class="index-value">4,892.34</span>
+                                <span class="index-change">+0.8%</span>
+                            </div>
+                            <div class="market-index down">
+                                <span class="index-name">Hang Seng</span>
+                                <span class="index-value">18,765.43</span>
+                                <span class="index-change">-0.5%</span>
+                            </div>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="market-indices-chart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="card sector-performance">
+                        <h3>Sector Performance</h3>
+                        <div class="chart-container">
+                            <canvas id="sector-performance-chart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="card currency-impact">
+                        <h3>AUD/USD Exchange Rate</h3>
+                        <div class="chart-container">
+                            <canvas id="exchange-rate-chart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="card top-opportunities">
+                        <h3>Top Trading Opportunities</h3>
+                        <div class="opportunities-list">
+                            <div class="opportunity">
+                                <span class="symbol">MIN.AX</span>
+                                <span class="name">Mineral Resources</span>
+                                <span class="score">87.5</span>
+                                <span class="movement">+15.2%</span>
+                            </div>
+                            <div class="opportunity">
+                                <span class="symbol">BHP.AX</span>
+                                <span class="name">BHP Group</span>
+                                <span class="score">82.3</span>
+                                <span class="movement">+12.8%</span>
+                            </div>
+                            <div class="opportunity">
+                                <span class="symbol">FMG.AX</span>
+                                <span class="name">Fortescue Metals</span>
+                                <span class="score">79.6</span>
+                                <span class="movement">+14.5%</span>
+                            </div>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="top-opportunities-chart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="card recent-alerts">
+                        <h3>Recent Alerts</h3>
+                        <div class="alerts-list">
+                            <div class="alert high">
+                                <span class="alert-time">10:15 AM</span>
+                                <span class="alert-message">BHP.AX crossed above $45.00</span>
+                            </div>
+                            <div class="alert medium">
+                                <span class="alert-time">09:42 AM</span>
+                                <span class="alert-message">FMG.AX RSI entered overbought territory</span>
+                            </div>
+                            <div class="alert low">
+                                <span class="alert-time">09:30 AM</span>
+                                <span class="alert-message">ASX 200 opened up 0.8%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="trading-opportunities">
+            <div class="container">
+                <h2>Trading Opportunities</h2>
+                <div class="filters">
+                    <div class="filter-group">
+                        <label for="sector-filter">Sector</label>
+                        <select id="sector-filter">
+                            <option value="all">All Sectors</option>
+                            <option value="materials">Materials</option>
+                            <option value="energy">Energy</option>
+                            <option value="consumer">Consumer Staples</option>
+                            <option value="healthcare">Healthcare</option>
+                            <option value="technology">Technology</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="score-filter">Min Score</label>
+                        <input type="range" id="score-filter" min="0" max="100" value="70">
+                        <span class="range-value">70</span>
+                    </div>
+                    <div class="filter-group">
+                        <label for="movement-filter">Min Movement</label>
+                        <input type="range" id="movement-filter" min="0" max="30" value="15">
+                        <span class="range-value">15%</span>
+                    </div>
+                </div>
+
+                <div class="opportunities-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Symbol</th>
+                                <th>Name</th>
+                                <th>Sector</th>
+                                <th>Composite Score</th>
+                                <th>Tariff Impact</th>
+                                <th>Technical Score</th>
+                                <th>Movement Score</th>
+                                <th>Current Price</th>
+                                <th>Entry Price</th>
+                                <th>Stop Loss</th>
+                                <th>Take Profit</th>
+                                <th>Risk/Reward</th>
+                                <th>Movement Probability</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>MIN.AX</td>
+                                <td>Mineral Resources</td>
+                                <td>Materials</td>
+                                <td>87.5</td>
+                                <td>85</td>
+                                <td>82</td>
+                                <td>92</td>
+                                <td>$65.42</td>
+                                <td>$64.80</td>
+                                <td>$60.25</td>
+                                <td>$75.50</td>
+                                <td>2.8</td>
+                                <td>78%</td>
+                            </tr>
+                            <tr>
+                                <td>BHP.AX</td>
+                                <td>BHP Group</td>
+                                <td>Materials</td>
+                                <td>82.3</td>
+                                <td>80</td>
+                                <td>79</td>
+                                <td>86</td>
+                                <td>$45.78</td>
+                                <td>$45.20</td>
+                                <td>$42.50</td>
+                                <td>$52.30</td>
+                                <td>2.6</td>
+                                <td>72%</td>
+                            </tr>
+                            <tr>
+                                <td>FMG.AX</td>
+                                <td>Fortescue Metals</td>
+                                <td>Materials</td>
+                                <td>79.6</td>
+                                <td>82</td>
+                                <td>75</td>
+                                <td>81</td>
+                                <td>$22.45</td>
+                                <td>$22.10</td>
+                                <td>$20.80</td>
+                                <td>$25.40</td>
+                                <td>2.5</td>
+                                <td>68%</td>
+                            </tr>
+                            <tr>
+                                <td>TWE.AX</td>
+                                <td>Treasury Wine Estates</td>
+                                <td>Consumer Staples</td>
+                                <td>76.8</td>
+                                <td>90</td>
+                                <td>68</td>
+                                <td>74</td>
+                                <td>$12.35</td>
+                                <td>$12.10</td>
+                                <td>$11.20</td>
+                                <td>$14.50</td>
+                                <td>2.7</td>
+                                <td>65%</td>
+                            </tr>
+                            <tr>
+                                <td>S32.AX</td>
+                                <td>South32</td>
+                                <td>Materials</td>
+                                <td>75.2</td>
+                                <td>78</td>
+                                <td>72</td>
+                                <td>76</td>
+                                <td>$3.45</td>
+                                <td>$3.40</td>
+                                <td>$3.15</td>
+                                <td>$3.95</td>
+                                <td>2.2</td>
+                                <td>62%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="stock-detail">
+                    <h3>Stock Detail: Mineral Resources (MIN.AX)</h3>
+                    <div class="detail-grid">
+                        <div class="detail-chart">
+                            <div class="chart-container">
+                                <canvas id="stock-detail-chart"></canvas>
+                            </div>
+                        </div>
+                        <div class="detail-info">
+                            <div class="info-group">
+                                <h4>Trading Parameters</h4>
+                                <div class="info-item">
+                                    <span class="label">Entry Price:</span>
+                                    <span class="value">$64.80</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="label">Stop Loss:</span>
+                                    <span class="value">$60.25</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="label">Take Profit:</span>
+                                    <span class="value">$75.50</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="label">Risk/Reward:</span>
+                                    <span class="value">2.8</span>
+                                </div>
+                            </div>
+                            <div class="info-group">
+                                <h4>Tariff Impact</h4>
+                                <div class="info-item">
+                                    <span class="label">US Revenue Exposure:</span>
+                                    <span class="value">15%</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="label">China Revenue Exposure:</span>
+                                    <span class="value">65%</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="label">Tariff Sensitivity:</span>
+                                    <span class="value">High</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="label">FX Amplification:</span>
+                                    <span class="value">Moderate</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="market-analysis">
+            <div class="container">
+                <h2>Market Analysis</h2>
+                <div class="analysis-grid">
+                    <div class="card sector-analysis">
+                        <h3>Sector Analysis</h3>
+                        <div class="chart-container">
+                            <canvas id="asx-sector-performance-chart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="card currency-impact">
+                        <h3>Currency Impact</h3>
+                        <div class="chart-container">
+                            <canvas id="currency-impact-chart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="card supply-chain">
+                        <h3>Supply Chain Visualization</h3>
+                        <div class="chart-container">
+                            <canvas id="supply-chain-chart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="card volatility-analysis">
+                        <h3>Volatility Analysis</h3>
+                        <div class="chart-container">
+                            <canvas id="volatility-chart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="card tariff-impact">
+                        <h3>Tariff Impact Scores</h3>
+                        <div class="chart-container">
+                            <canvas id="tariff-impact-chart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="card comparative-analysis">
+                        <h3>AU vs US Performance</h3>
+                        <div class="chart-container">
+                            <canvas id="au-vs-us-chart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="alerts">
+            <div class="container">
+                <h2>Alerts</h2>
+                <div class="alerts-grid">
+                    <div class="card alert-list">
+                        <h3>Recent Alerts</h3>
+                        <div class="alerts-table">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Time</th>
+                                        <th>Type</th>
+                                        <th>Symbol</th>
+                                        <th>Message</th>
+                                        <th>Priority</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="high">
+                                        <td>10:15 AM</td>
+                                        <td>Price</td>
+                                        <td>BHP.AX</td>
+                                        <td>BHP.AX crossed above $45.00</td>
+                                        <td>High</td>
+                                    </tr>
+                                    <tr class="medium">
+                                        <td>09:42 AM</td>
+                                        <td>Technical</td>
+                                        <td>FMG.AX</td>
+                                        <td>FMG.AX RSI entered overbought territory</td>
+                                        <td>Medium</td>
+                                    </tr>
+                                    <tr class="low">
+                                        <td>09:30 AM</td>
+                                        <td>Market</td>
+                                        <td>XJO</td>
+                                        <td>ASX 200 opened up 0.8%</td>
+                                        <td>Low</td>
+                                    </tr>
+                                    <tr class="high">
+                                        <td>09:15 AM</td>
+                                        <td>News</td>
+                                        <td>TWE.AX</td>
+                                        <td>Trump announces new tariffs on wine imports</td>
+                                        <td>High</td>
+                                    </tr>
+                                    <tr class="medium">
+                                        <td>08:45 AM</td>
+                                        <td>Technical</td>
+                                        <td>MIN.AX</td>
+                                        <td>MIN.AX MACD bullish crossover</td>
+                                        <td>Medium</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="card alert-configuration">
+                        <h3>Alert Configuration</h3>
+                        <form class="alert-form">
+                            <div class="form-group">
+                                <label for="alert-symbol">Symbol</label>
+                                <input type="text" id="alert-symbol" placeholder="e.g., BHP.AX">
+                            </div>
+                            <div class="form-group">
+                                <label for="alert-type">Alert Type</label>
+                                <select id="alert-type">
+                                    <option value="price">Price Alert</option>
+                                    <option value="technical">Technical Alert</option>
+                                    <option value="news">News Alert</option>
+                                    <option value="market">Market Alert</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="alert-condition">Condition</label>
+                                <select id="alert-condition">
+                                    <option value="above">Price Above</option>
+                                    <option value="below">Price Below</option>
+                                    <option value="percent-change">Percent Change</option>
+                                    <option value="rsi-above">RSI Above</option>
+                                    <option value="rsi-below">RSI Below</option>
+                                    <option value="macd-cross">MACD Crossover</option>
+                                    <option value="keywords">News Keywords</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="alert-value">Value</label>
+                                <input type="text" id="alert-value" placeholder="e.g., 45.00, 70, Trump tariff">
+                            </div>
+                            <div class="form-group">
+                                <label for="alert-priority">Priority</label>
+                                <select id="alert-priority">
+                                    <option value="high">High</option>
+                                    <option value="medium">Medium</option>
+                                    <option value="low">Low</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn-primary">Add Alert</button>
+                        </form>
+                    </div>
+
+                    <div class="card alert-summary">
+                        <h3>Alert Summary</h3>
+                        <div class="chart-container">
+                            <canvas id="alert-summary-chart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="card active-alerts">
+                        <h3>Active Alerts</h3>
+                        <div class="active-alerts-table">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Symbol</th>
+                                        <th>Type</th>
+                                        <th>Condition</th>
+                                        <th>Value</th>
+                                        <th>Priority</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>BHP.AX</td>
+                                        <td>Price</td>
+                                        <td>Above</td>
+                                        <td>$45.00</td>
+                                        <td>High</td>
+                                        <td><button class="btn-small btn-danger">Delete</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>FMG.AX</td>
+                                        <td>Technical</td>
+                                        <td>RSI Above</td>
+                                        <td>70</td>
+                                        <td>Medium</td>
+                                        <td><button class="btn-small btn-danger">Delete</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Trump tariff China</td>
+                                        <td>News</td>
+                                        <td>Keywords</td>
+                                        <td>-</td>
+                                        <td>High</td>
+                                        <td><button class="btn-small btn-danger">Delete</button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="settings">
+            <div class="container">
+                <h2>Settings</h2>
+                <div class="settings-grid">
+                    <div class="card preferences">
+                        <h3>Preferences</h3>
+                        <form class="preferences-form">
+                            <div class="form-group">
+                                <label for="update-interval">Data Update Interval</label>
+                                <select id="update-interval">
+                                    <option value="1">1 minute</option>
+                                    <option value="5">5 minutes</option>
+                                    <option value="15">15 minutes</option>
+                                    <option value="30">30 minutes</option>
+                                    <option value="60">1 hour</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="default-view">Default View</label>
+                                <select id="default-view">
+                                    <option value="dashboard">Dashboard</option>
+                                    <option value="trading-opportunities">Trading Opportunities</option>
+                                    <option value="market-analysis">Market Analysis</option>
+                                    <option value="alerts">Alerts</option>
+                                </select>
+                            </div>
+                            <div class="form-group checkbox">
+                                <input type="checkbox" id="enable-notifications">
+                                <label for="enable-notifications">Enable Notifications</label>
+                            </div>
+                            <div class="form-group checkbox">
+                                <input type="checkbox" id="dark-mode">
+                                <label for="dark-mode">Dark Mode</label>
+                            </div>
+                            <button type="submit" class="btn-primary">Save Preferences</button>
+                        </form>
+                    </div>
+
+                    <div class="card data-persistence">
+                        <h3>Data Persistence</h3>
+                        <div class="persistence-controls">
+                            <div class="control-group">
+                                <h4>Export/Import</h4>
+                                <button class="btn-secondary export-btn">Export Data</button>
+                                <div class="import-container">
+                                    <label for="import-file" class="btn-secondary">Import Data</label>
+                                    <input type="file" id="import-file" style="display: none;">
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <h4>Backup/Restore</h4>
+                                <p>Last automatic backup: <span class="last-backup">Today, 10:15 AM</span></p>
+                                <button class="btn-secondary backup-btn">Create Manual Backup</button>
+                                <button class="btn-danger restore-btn">Restore from Backup</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card about">
+                        <h3>About</h3>
+                        <div class="about-content">
+                            <p><strong>Trump Tariff Impact Analysis</strong></p>
+                            <p>Version: 2.0.0</p>
+                            <p>Last Updated: April 8, 2025</p>
+                            <p>This tool provides comprehensive analysis of Trump tariff impacts on Australian stocks for active trading strategies.</p>
+                            <p>Features include:</p>
+                            <ul>
+                                <li>Real-time market data</li>
+                                <li>Advanced visualization tools</li>
+                                <li>Predictive analytics</li>
+                                <li>Customizable alerts</li>
+                                <li>Trading opportunity identification</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Trump Tariff Impact Analysis. All data is simulated for demonstration purposes.</p>
+        </div>
+    </footer>
+
+    <script src="scripts/main.js"></script>
+    <script src="scripts/simpleChartRenderer.js"></script>
+    <script src="scripts/filterFunctionality.js"></script>
+    <script src="scripts/mobileCompatibilityIntegration.js"></script>
+</body>
+</html>

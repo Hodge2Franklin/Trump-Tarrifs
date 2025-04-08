@@ -1,0 +1,540 @@
+/**
+ * Customizable Dashboard Styles for Trump Tariff Analysis Website
+ * 
+ * This stylesheet provides styles for customizable dashboards with
+ * drag-and-drop widgets, multiple layouts, and edit mode.
+ */
+
+/* Dashboard Container */
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  background-color: var(--background-color);
+}
+
+/* Dashboard Header */
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: var(--panel-background);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+}
+
+.dashboard-title {
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard-title h2 {
+  margin: 0;
+  font-size: calc(20px * var(--font-size-multiplier));
+  color: var(--text-color);
+}
+
+.dashboard-description {
+  margin: 5px 0 0 0;
+  font-size: calc(14px * var(--font-size-multiplier));
+  color: var(--text-color);
+  opacity: 0.7;
+}
+
+.dashboard-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.layout-selector {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.layout-selector label {
+  font-size: calc(14px * var(--font-size-multiplier));
+  color: var(--text-color);
+}
+
+.dashboard-layout-select {
+  padding: 5px 10px;
+  font-size: calc(14px * var(--font-size-multiplier));
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background-color: var(--panel-background);
+  color: var(--text-color);
+}
+
+.dashboard-control-button {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 8px 12px;
+  font-size: calc(14px * var(--font-size-multiplier));
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background-color: var(--panel-background);
+  color: var(--text-color);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.dashboard-control-button:hover {
+  background-color: var(--secondary-color);
+  color: white;
+}
+
+.dashboard-control-button.active {
+  background-color: var(--secondary-color);
+  color: white;
+}
+
+.dashboard-control-button i {
+  font-style: normal;
+}
+
+/* Widget Selector */
+.widget-selector {
+  background-color: var(--panel-background);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.widget-selector-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: var(--panel-header-background);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.widget-selector-header h3 {
+  margin: 0;
+  font-size: calc(16px * var(--font-size-multiplier));
+  color: var(--text-color);
+}
+
+.widget-selector-content {
+  padding: 10px;
+}
+
+.widget-categories {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 10px;
+  overflow-x: auto;
+  padding-bottom: 5px;
+}
+
+.widget-category {
+  padding: 5px 10px;
+  font-size: calc(14px * var(--font-size-multiplier));
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background-color: var(--panel-background);
+  color: var(--text-color);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.widget-category.active {
+  background-color: var(--secondary-color);
+  color: white;
+}
+
+.available-widgets {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 10px;
+  max-height: 300px;
+  overflow-y: auto;
+  padding-right: 5px;
+}
+
+.available-widget {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  background-color: var(--panel-background);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+}
+
+.widget-icon {
+  font-size: calc(24px * var(--font-size-multiplier));
+  color: var(--text-color);
+}
+
+.widget-info {
+  flex: 1;
+}
+
+.widget-title {
+  font-size: calc(16px * var(--font-size-multiplier));
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+.widget-description {
+  font-size: calc(12px * var(--font-size-multiplier));
+  color: var(--text-color);
+  opacity: 0.7;
+}
+
+.add-widget-button {
+  padding: 5px 10px;
+  font-size: calc(14px * var(--font-size-multiplier));
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background-color: var(--success-color);
+  color: white;
+  cursor: pointer;
+}
+
+.add-widget-button:hover {
+  opacity: 0.9;
+}
+
+/* Dashboard Content */
+.dashboard-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-height: 500px;
+}
+
+/* Layout Classes */
+.dashboard-content.column-layout {
+  flex-direction: row;
+}
+
+.dashboard-content.layout-1-column {
+  flex-direction: column;
+}
+
+.dashboard-content.layout-2-column {
+  flex-direction: row;
+}
+
+.dashboard-content.layout-3-column {
+  flex-direction: row;
+}
+
+.dashboard-content.grid-layout {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.dashboard-content.asymmetric-layout {
+  flex-direction: row;
+}
+
+/* Dashboard Columns */
+.dashboard-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Asymmetric Layout */
+.main-column {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sidebar {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Widget Container */
+.widget-container {
+  min-height: 100px;
+  background-color: rgba(0, 0, 0, 0.03);
+  border: 1px dashed var(--border-color);
+  border-radius: 4px;
+  padding: 10px;
+}
+
+.empty-widget-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  min-height: 100px;
+  color: var(--text-color);
+  opacity: 0.5;
+  font-style: italic;
+}
+
+/* Dashboard Widget */
+.dashboard-widget {
+  background-color: var(--panel-background);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+.dashboard-widget.dragging {
+  opacity: 0.7;
+  transform: scale(0.95);
+}
+
+.edit-mode .dashboard-widget:hover {
+  box-shadow: 0 0 0 2px var(--secondary-color);
+}
+
+.widget-header {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background-color: var(--panel-header-background);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.widget-drag-handle {
+  cursor: move;
+  margin-right: 10px;
+  color: var(--text-color);
+  opacity: 0.5;
+}
+
+.edit-mode .widget-drag-handle {
+  opacity: 1;
+}
+
+.widget-title {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.widget-title h3 {
+  margin: 0;
+  font-size: calc(16px * var(--font-size-multiplier));
+  color: var(--text-color);
+}
+
+.widget-controls {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.widget-size-control {
+  display: flex;
+  gap: 2px;
+}
+
+.widget-size-button {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  color: var(--text-color);
+  cursor: pointer;
+  font-size: calc(14px * var(--font-size-multiplier));
+}
+
+.widget-size-button.active {
+  background-color: var(--secondary-color);
+  color: white;
+}
+
+.widget-remove-button {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  color: var(--accent-color);
+  cursor: pointer;
+  font-size: calc(16px * var(--font-size-multiplier));
+}
+
+.widget-content {
+  padding: 15px;
+  overflow: auto;
+}
+
+/* Widget Sizes */
+.widget-small {
+  height: 200px;
+}
+
+.widget-medium {
+  height: 300px;
+}
+
+.widget-large {
+  height: 400px;
+}
+
+/* Widget Placeholder Content */
+.widget-placeholder {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.widget-placeholder h4 {
+  margin: 0 0 10px 0;
+  font-size: calc(16px * var(--font-size-multiplier));
+  color: var(--text-color);
+}
+
+.placeholder-chart {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 10px;
+}
+
+.placeholder-data {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px;
+  background-color: rgba(0, 0, 0, 0.03);
+  border-radius: 4px;
+}
+
+.placeholder-label {
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+.placeholder-value {
+  color: var(--text-color);
+}
+
+.placeholder-change {
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: calc(12px * var(--font-size-multiplier));
+}
+
+.placeholder-change.positive {
+  background-color: rgba(39, 174, 96, 0.2);
+  color: #27ae60;
+}
+
+.placeholder-change.negative {
+  background-color: rgba(192, 57, 43, 0.2);
+  color: #c0392b;
+}
+
+.placeholder-list {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  overflow-y: auto;
+}
+
+.placeholder-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px;
+  background-color: rgba(0, 0, 0, 0.03);
+  border-radius: 4px;
+}
+
+.placeholder-item-label {
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+.placeholder-item-value {
+  color: var(--text-color);
+}
+
+.placeholder-item-change {
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: calc(12px * var(--font-size-multiplier));
+  color: var(--text-color);
+}
+
+/* Dark Mode Adjustments */
+body.dark-mode .widget-container {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+body.dark-mode .placeholder-data,
+body.dark-mode .placeholder-item {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+body.dark-mode .placeholder-change.positive {
+  background-color: rgba(39, 174, 96, 0.3);
+}
+
+body.dark-mode .placeholder-change.negative {
+  background-color: rgba(192, 57, 43, 0.3);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1200px) {
+  .dashboard-content.layout-3-column {
+    flex-direction: column;
+  }
+  
+  .dashboard-content.grid-layout {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .dashboard-content.asymmetric-layout {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  
+  .dashboard-controls {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+  
+  .dashboard-content.layout-2-column {
+    flex-direction: column;
+  }
+  
+  .dashboard-content.grid-layout {
+    grid-template-columns: 1fr;
+  }
+  
+  .available-widgets {
+    grid-template-columns: 1fr;
+  }
+}

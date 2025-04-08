@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Stock predictions with detailed rationale for Trump tariff impacts on Australian stocks">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Stock Predictions - Trump Tariff Impact Analysis</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/predictions.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>Trump Tariff Impact Analysis</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="../index.html">Dashboard</a></li>
+                    <li><a href="trading-opportunities.html">Trading Opportunities</a></li>
+                    <li><a href="stock-predictions.html" class="active">Stock Predictions</a></li>
+                    <li><a href="market-analysis.html">Market Analysis</a></li>
+                    <li><a href="alerts.html">Alerts</a></li>
+                    <li><a href="settings.html">Settings</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="stock-predictions" class="active-section">
+            <div class="container">
+                <h2>Stock Predictions with Rationale</h2>
+                <p class="section-description">
+                    Our advanced prediction models analyze Trump tariff impacts on Australian stocks, providing detailed rationale and confidence scores for each prediction.
+                </p>
+
+                <div class="prediction-controls">
+                    <div class="filters">
+                        <div class="filter-group">
+                            <label for="timeframe-filter">Timeframe</label>
+                            <select id="timeframe-filter">
+                                <option value="short_term">Short Term (1-7 days)</option>
+                                <option value="medium_term" selected>Medium Term (8-30 days)</option>
+                                <option value="long_term">Long Term (31-90 days)</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label for="sector-filter">Sector</label>
+                            <select id="sector-filter">
+                                <option value="all">All Sectors</option>
+                                <option value="Materials">Materials</option>
+                                <option value="Consumer Staples">Consumer Staples</option>
+                                <option value="Healthcare">Healthcare</option>
+                                <option value="Financials">Financials</option>
+                                <option value="Information Technology">Information Technology</option>
+                                <option value="Industrials">Industrials</option>
+                                <option value="Utilities">Utilities</option>
+                                <option value="Energy">Energy</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label for="min-movement-filter">Min Movement</label>
+                            <input type="range" id="min-movement-filter" min="5" max="30" value="15" step="5">
+                            <span class="range-value">15%</span>
+                        </div>
+                        <div class="filter-group">
+                            <label for="risk-profile-filter">Risk Profile</label>
+                            <select id="risk-profile-filter">
+                                <option value="all">All Risk Levels</option>
+                                <option value="low">Low Risk</option>
+                                <option value="medium">Medium Risk</option>
+                                <option value="high">High Risk</option>
+                                <option value="very_high">Very High Risk</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="view-controls">
+                        <button id="view-stocks" class="view-button active">Stock View</button>
+                        <button id="view-sectors" class="view-button">Sector View</button>
+                    </div>
+                </div>
+
+                <div class="prediction-views">
+                    <div id="stock-predictions-view" class="prediction-view active">
+                        <div class="prediction-grid" id="stock-predictions-grid">
+                            <!-- Stock prediction cards will be inserted here -->
+                            <div class="loading-indicator">Loading predictions...</div>
+                        </div>
+                    </div>
+                    <div id="sector-predictions-view" class="prediction-view">
+                        <div class="sector-grid" id="sector-predictions-grid">
+                            <!-- Sector prediction cards will be inserted here -->
+                            <div class="loading-indicator">Loading sector predictions...</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="prediction-details-modal" id="prediction-details-modal">
+                    <div class="modal-content" id="prediction-details-content">
+                        <!-- Detailed prediction content will be inserted here -->
+                    </div>
+                </div>
+
+                <div class="model-accuracy-section">
+                    <h3>Prediction Model Accuracy</h3>
+                    <div class="accuracy-stats" id="accuracy-stats">
+                        <div class="accuracy-stat">
+                            <div class="stat-label">Overall Accuracy</div>
+                            <div class="stat-value">72%</div>
+                        </div>
+                        <div class="accuracy-stat">
+                            <div class="stat-label">Bullish Predictions</div>
+                            <div class="stat-value">74%</div>
+                        </div>
+                        <div class="accuracy-stat">
+                            <div class="stat-label">Bearish Predictions</div>
+                            <div class="stat-value">70%</div>
+                        </div>
+                        <div class="accuracy-stat">
+                            <div class="stat-label">High Confidence</div>
+                            <div class="stat-value">78%</div>
+                        </div>
+                    </div>
+                    <div class="accuracy-chart" id="accuracy-chart">
+                        <!-- Accuracy chart will be inserted here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Trump Tariff Analysis</h3>
+                    <p>Comprehensive analysis of Trump tariff impacts on Australian stocks for active trading.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="../index.html">Dashboard</a></li>
+                        <li><a href="trading-opportunities.html">Trading Opportunities</a></li>
+                        <li><a href="stock-predictions.html">Stock Predictions</a></li>
+                        <li><a href="market-analysis.html">Market Analysis</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Data Sources</h3>
+                    <ul>
+                        <li>ASX Market Data</li>
+                        <li>Tariff Announcement Feeds</li>
+                        <li>Economic Indicators</li>
+                        <li>Technical Analysis</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Trump Tariff Analysis. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../scripts/main.js"></script>
+    <script src="../scripts/stockPredictionAPI.js" type="module"></script>
+    <script src="../scripts/stockPredictions.js" type="module"></script>
+</body>
+</html>

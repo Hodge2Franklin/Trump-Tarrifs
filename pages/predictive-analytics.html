@@ -1,0 +1,200 @@
+/**
+ * Predictive Analytics Page for Trump Tariff Analysis Website
+ * 
+ * This page integrates the predictive analytics components to provide
+ * comprehensive tariff impact predictions, price movement forecasts,
+ * and scenario analysis tools.
+ */
+
+import PredictiveAnalyticsComponents from '../components/prediction/PredictiveAnalyticsComponents.js';
+import SectorCoverageData from '../data/SectorCoverageData.js';
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Initialize components
+  const predictiveComponents = new PredictiveAnalyticsComponents();
+  const sectorData = new SectorCoverageData();
+  
+  // Initialize page
+  initializePage();
+  
+  /**
+   * Initialize the page
+   */
+  function initializePage() {
+    // Create page structure
+    createPageStructure();
+    
+    // Set up stock selector
+    setupStockSelector();
+    
+    // Set up tab navigation
+    setupTabNavigation();
+    
+    // Load default stock
+    loadStock('BHP.AX');
+  }
+  
+  /**
+   * Create page structure
+   */
+  function createPageStructure() {
+    const mainContent = document.getElementById('main-content');
+    if (!mainContent) return;
+    
+    mainContent.innerHTML = `
+      <div class="predictive-analytics-page">
+        <header class="page-header">
+          <h1>Predictive Analytics</h1>
+          <p>Advanced predictions and scenario analysis for Trump tariff impacts on Australian stocks</p>
+        </header>
+        
+        <div class="stock-selector-container">
+          <label for="stock-selector">Select Stock:</label>
+          <select id="stock-selector" class="stock-selector"></select>
+          <div class="stock-info" id="stock-info"></div>
+        </div>
+        
+        <div class="tabs-container">
+          <div class="tabs-navigation">
+            <button class="tab-button active" data-tab="tariff-impact">Tariff Impact</button>
+            <button class="tab-button" data-tab="price-movement">Price Movement</button>
+            <button class="tab-button" data-tab="scenario-analysis">Scenario Analysis</button>
+          </div>
+          
+          <div class="tab-content active" id="tariff-impact-tab">
+            <div id="tariff-impact-container" class="prediction-container"></div>
+          </div>
+          
+          <div class="tab-content" id="price-movement-tab">
+            <div id="price-movement-container" class="prediction-container"></div>
+          </div>
+          
+          <div class="tab-content" id="scenario-analysis-tab">
+            <div id="scenario-analysis-container" class="prediction-container"></div>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+  
+  /**
+   * Set up stock selector
+   */
+  function setupStockSelector() {
+    const stockSelector = document.getElementById('stock-selector');
+    if (!stockSelector) return;
+    
+    // Get all stocks
+    const stocks = sectorData.getAllStocks();
+    
+    // Sort stocks by symbol
+    stocks.sort((a, b) => a.symbol.localeCompare(b.symbol));
+    
+    // Add options for each stock
+    stocks.forEach(stock => {
+      const option = document.createElement('option');
+      option.value = stock.symbol;
+      option.textContent = `${stock.symbol} - ${stock.name}`;
+      stockSelector.appendChild(option);
+    });
+    
+    // Add event listener
+    stockSelector.addEventListener('change', () => {
+      loadStock(stockSelector.value);
+    });
+  }
+  
+  /**
+   * Set up tab navigation
+   */
+  function setupTabNavigation() {
+    const tabButtons = document.querySelectorAll('.tab-button');
+    const tabContents = document.querySelectorAll('.tab-content');
+    
+    tabButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Remove active class from all buttons and contents
+        tabButtons.forEach(btn => btn.classList.remove('active'));
+        tabContents.forEach(content => content.classList.remove('active'));
+        
+        // Add active class to clicked button and corresponding content
+        button.classList.add('active');
+        const tabId = button.getAttribute('data-tab');
+        document.getElementById(`${tabId}-tab`).classList.add('active');
+      });
+    });
+  }
+  
+  /**
+   * Load stock data and predictions
+   * @param {string} symbol - Stock symbol
+   */
+  function loadStock(symbol) {
+    // Get stock data
+    const stockData = sectorData.getStockData(symbol);
+    if (!stockData) return;
+    
+    // Update stock info
+    updateStockInfo(stockData);
+    
+    // Render predictions
+    renderPredictions(stockData);
+  }
+  
+  /**
+   * Update stock info
+   * @param {Object} stockData - Stock data
+   */
+  function updateStockInfo(stockData) {
+    const stockInfo = document.getElementById('stock-info');
+    if (!stockInfo) return;
+    
+    stockInfo.innerHTML = `
+      <div class="stock-info-header">
+        <h2>${stockData.symbol}</h2>
+        <div class="stock-price">$${stockData.price.toFixed(2)}</div>
+      </div>
+      <div class="stock-info-details">
+        <div class="info-item">
+          <span class="info-label">Name:</span>
+          <span class="info-value">${stockData.name}</span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">Sector:</span>
+          <span class="info-value">${stockData.sector}</span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">Risk Profile:</span>
+          <span class="info-value">${stockData.riskProfile}</span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">Market Cap:</span>
+          <span class="info-value">${stockData.marketCap}</span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">Tariff Sensitivity:</span>
+          <span class="info-value">${stockData.tariffSensitivityScore.toFixed(1)}/10</span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">Movement Potential:</span>
+          <span class="info-value">${stockData.movementPotentialScore.toFixed(1)}/10</span>
+        </div>
+      </div>
+    `;
+  }
+  
+  /**
+   * Render predictions
+   * @param {Object} stockData - Stock data
+   */
+  function renderPredictions(stockData) {
+    // Render tariff impact prediction
+    predictiveComponents.renderTariffImpactPrediction('tariff-impact-container', stockData);
+    
+    // Render price movement prediction
+    predictiveComponents.renderPriceMovementPrediction('price-movement-container', stockData);
+    
+    // Render scenario analysis
+    predictiveComponents.renderScenarioAnalysis('scenario-analysis-container', stockData);
+  }
+});

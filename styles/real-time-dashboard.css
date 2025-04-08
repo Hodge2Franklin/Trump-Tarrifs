@@ -1,0 +1,342 @@
+/* Real-Time Data Dashboard Styles */
+
+.dashboard-container {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+  overflow: hidden;
+}
+
+/* Dashboard Header */
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  background-color: #fff;
+  border-bottom: 1px solid #eee;
+}
+
+.dashboard-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.dashboard-controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.refresh-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.refresh-button:hover {
+  background-color: #0069d9;
+}
+
+.refresh-icon {
+  display: inline-block;
+  font-size: 1.2rem;
+  animation: spin 2s linear infinite paused;
+}
+
+.refreshing .refresh-icon {
+  animation-play-state: running;
+}
+
+.last-updated {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* Dashboard Grid */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: auto auto;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+/* Dashboard Sections */
+.dashboard-section {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #eee;
+}
+
+.section-header h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.section-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.section-refresh-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background-color: #f0f0f0;
+  border: 1px solid #ddd;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.section-refresh-button:hover {
+  background-color: #e0e0e0;
+}
+
+.section-filter {
+  padding: 0.25rem 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.section-content {
+  padding: 1rem;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+/* Loading Indicator */
+.loading-indicator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  color: #666;
+  font-style: italic;
+}
+
+/* No Data Message */
+.no-data {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  color: #666;
+  font-style: italic;
+}
+
+/* Data Tables */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.data-table th,
+.data-table td {
+  padding: 0.5rem;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+.data-table th {
+  font-weight: 600;
+  color: #333;
+  background-color: #f9f9f9;
+}
+
+.data-table tr:hover {
+  background-color: #f5f5f5;
+}
+
+/* Stock Quotes Table */
+.stocks-table .stock-symbol {
+  font-weight: 600;
+  color: #333;
+}
+
+.stocks-table .stock-price {
+  font-weight: 500;
+}
+
+.stocks-table .stock-volume {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+/* Market Indices Table */
+.indices-table .index-name {
+  font-weight: 600;
+  color: #333;
+}
+
+.indices-table .index-value {
+  font-weight: 500;
+}
+
+/* Forex Rates Table */
+.forex-table .forex-pair {
+  font-weight: 600;
+  color: #333;
+}
+
+.forex-table .forex-rate {
+  font-weight: 500;
+}
+
+/* Change Values */
+.positive-change {
+  color: #28a745;
+}
+
+.negative-change {
+  color: #dc3545;
+}
+
+/* Flash Effect for Updates */
+.flash {
+  animation: flash-animation 1s;
+}
+
+@keyframes flash-animation {
+  0% {
+    background-color: rgba(255, 255, 0, 0.5);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+/* News List */
+.news-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.news-item {
+  padding: 0.75rem;
+  border-bottom: 1px solid #eee;
+  transition: background-color 0.3s;
+}
+
+.news-item:last-child {
+  border-bottom: none;
+}
+
+.news-item.new-item {
+  background-color: rgba(255, 255, 0, 0.1);
+}
+
+.news-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.3rem;
+}
+
+.news-source {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.news-timestamp {
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.news-headline {
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+}
+
+.news-headline.sentiment-positive {
+  color: #28a745;
+}
+
+.news-headline.sentiment-negative {
+  color: #dc3545;
+}
+
+.news-headline.sentiment-neutral {
+  color: #333;
+}
+
+.news-summary {
+  font-size: 0.9rem;
+  color: #666;
+  line-height: 1.5;
+}
+
+/* Spin Animation */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .dashboard-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  
+  .dashboard-controls {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 576px) {
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  
+  .section-controls {
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .data-table th,
+  .data-table td {
+    padding: 0.3rem;
+    font-size: 0.9rem;
+  }
+}

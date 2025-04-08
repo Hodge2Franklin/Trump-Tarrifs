@@ -1,0 +1,846 @@
+/* Predictions CSS Styles */
+
+/* Prediction Controls */
+.prediction-controls {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  flex: 1;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  min-width: 150px;
+}
+
+.filter-group label {
+  font-size: 0.9rem;
+  margin-bottom: 0.3rem;
+  font-weight: 500;
+}
+
+.filter-group select,
+.filter-group input {
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.range-value {
+  font-size: 0.9rem;
+  margin-top: 0.3rem;
+  text-align: center;
+}
+
+.view-controls {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.view-button {
+  padding: 0.5rem 1rem;
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.view-button.active {
+  background-color: #007bff;
+  color: white;
+  border-color: #0069d9;
+}
+
+/* Prediction Views */
+.prediction-view {
+  display: none;
+}
+
+.prediction-view.active {
+  display: block;
+}
+
+.prediction-grid,
+.sector-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+/* Loading and Error States */
+.loading-indicator,
+.error-message,
+.no-predictions {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 2rem;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+}
+
+.error-message {
+  color: #dc3545;
+}
+
+/* Prediction Cards */
+.prediction-card,
+.sector-prediction-card {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+}
+
+.prediction-card:hover,
+.sector-prediction-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.prediction-card.bullish {
+  border-left: 5px solid #28a745;
+}
+
+.prediction-card.bearish {
+  border-left: 5px solid #dc3545;
+}
+
+.sector-prediction-card.bullish {
+  border-left: 5px solid #28a745;
+}
+
+.sector-prediction-card.bearish {
+  border-left: 5px solid #dc3545;
+}
+
+/* Prediction Card Header */
+.prediction-header,
+.sector-prediction-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.prediction-symbol {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-right: 0.5rem;
+}
+
+.prediction-name {
+  font-size: 1rem;
+  color: #666;
+  flex: 1;
+}
+
+.prediction-sector,
+.sector-name {
+  font-size: 0.9rem;
+  color: #888;
+  background-color: #f5f5f5;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+}
+
+.sector-name {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #333;
+}
+
+/* Prediction Summary */
+.prediction-summary,
+.sector-prediction-summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  background-color: #f9f9f9;
+  border-radius: 4px;
+}
+
+.prediction-direction,
+.sector-direction {
+  display: flex;
+  align-items: center;
+}
+
+.direction-icon {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-right: 0.3rem;
+}
+
+.prediction-direction.bullish .direction-icon,
+.sector-direction.bullish .direction-icon {
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 12px solid #28a745;
+}
+
+.prediction-direction.bearish .direction-icon,
+.sector-direction.bearish .direction-icon {
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 12px solid #dc3545;
+}
+
+.direction-text {
+  font-weight: 700;
+}
+
+.prediction-direction.bullish .direction-text,
+.sector-direction.bullish .direction-text {
+  color: #28a745;
+}
+
+.prediction-direction.bearish .direction-text,
+.sector-direction.bearish .direction-text {
+  color: #dc3545;
+}
+
+.prediction-movement,
+.sector-movement {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.movement-value {
+  color: #333;
+}
+
+.bullish .movement-value {
+  color: #28a745;
+}
+
+.bearish .movement-value {
+  color: #dc3545;
+}
+
+.prediction-confidence,
+.sector-confidence {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.confidence-label {
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.confidence-value {
+  font-weight: 700;
+}
+
+.prediction-confidence.high .confidence-value,
+.prediction-confidence.very_high .confidence-value {
+  color: #28a745;
+}
+
+.prediction-confidence.low .confidence-value,
+.prediction-confidence.very_low .confidence-value {
+  color: #dc3545;
+}
+
+/* Price Info */
+.prediction-price-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.current-price,
+.target-price,
+.prediction-timeframe {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.price-label,
+.timeframe-label {
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.price-value,
+.timeframe-value {
+  font-weight: 700;
+}
+
+/* Stocks Summary */
+.sector-stocks-summary {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  background-color: #f9f9f9;
+  border-radius: 4px;
+}
+
+.stocks-count,
+.bullish-count,
+.bearish-count {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.count-label {
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.count-value {
+  font-weight: 700;
+}
+
+/* Rationale Summary */
+.prediction-rationale-summary,
+.sector-rationale-summary {
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+  line-height: 1.5;
+  color: #333;
+}
+
+/* Top Picks */
+.sector-top-picks {
+  margin-bottom: 1.5rem;
+}
+
+.sector-top-picks h4 {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+.top-picks-list {
+  display: flex;
+  gap: 1rem;
+}
+
+.bullish-picks,
+.bearish-picks {
+  flex: 1;
+}
+
+.bullish-picks h5,
+.bearish-picks h5 {
+  margin-bottom: 0.3rem;
+  font-size: 0.9rem;
+}
+
+.bullish-picks h5 {
+  color: #28a745;
+}
+
+.bearish-picks h5 {
+  color: #dc3545;
+}
+
+.bullish-picks ul,
+.bearish-picks ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.bullish-picks li,
+.bearish-picks li {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.2rem 0;
+  font-size: 0.9rem;
+}
+
+.pick-symbol {
+  font-weight: 700;
+}
+
+.bullish-picks .pick-movement {
+  color: #28a745;
+}
+
+.bearish-picks .pick-movement {
+  color: #dc3545;
+}
+
+/* View Details Button */
+.view-details-button {
+  align-self: center;
+  padding: 0.5rem 1rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.view-details-button:hover {
+  background-color: #0069d9;
+}
+
+/* Modal */
+.prediction-details-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+.modal-content {
+  background-color: white;
+  border-radius: 8px;
+  max-width: 900px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+body.modal-open {
+  overflow: hidden;
+}
+
+/* Detailed Prediction */
+.detailed-prediction-container,
+.detailed-sector-prediction-container {
+  padding: 2rem;
+}
+
+.detailed-prediction-header,
+.detailed-sector-prediction-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 1rem;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #666;
+}
+
+.close-button:hover {
+  color: #333;
+}
+
+/* Prediction Summary Section */
+.prediction-summary-section,
+.sector-summary-section {
+  margin-bottom: 2rem;
+}
+
+.summary-content,
+.sector-summary-content {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.direction-summary,
+.sector-direction-summary {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  flex: 1;
+  min-width: 300px;
+}
+
+.direction-indicator {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 1rem;
+}
+
+.direction-indicator.bullish {
+  background-color: rgba(40, 167, 69, 0.2);
+  color: #28a745;
+}
+
+.direction-indicator.bearish {
+  background-color: rgba(220, 53, 69, 0.2);
+  color: #dc3545;
+}
+
+.direction-indicator.bullish::before {
+  content: "▲";
+  font-size: 1.5rem;
+  color: #28a745;
+}
+
+.direction-indicator.bearish::before {
+  content: "▼";
+  font-size: 1.5rem;
+  color: #dc3545;
+}
+
+.direction-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.direction-label {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+}
+
+.direction-summary.bullish .direction-label,
+.sector-direction-summary.bullish .direction-label {
+  color: #28a745;
+}
+
+.direction-summary.bearish .direction-label,
+.sector-direction-summary.bearish .direction-label {
+  color: #dc3545;
+}
+
+.confidence-label {
+  font-size: 0.9rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  display: inline-block;
+  margin-top: 0.5rem;
+}
+
+.confidence-label.high,
+.confidence-label.very_high {
+  background-color: rgba(40, 167, 69, 0.2);
+  color: #28a745;
+}
+
+.confidence-label.low,
+.confidence-label.very_low {
+  background-color: rgba(220, 53, 69, 0.2);
+  color: #dc3545;
+}
+
+.confidence-label.moderate {
+  background-color: rgba(255, 193, 7, 0.2);
+  color: #856404;
+}
+
+.price-summary,
+.stocks-summary {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  flex: 1;
+  min-width: 300px;
+}
+
+.price-item,
+.stocks-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Rationale Section */
+.prediction-rationale-section,
+.sector-rationale-section {
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+}
+
+.rationale-summary,
+.sector-rationale-paragraph {
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.primary-factors-list,
+.additional-considerations-list {
+  padding-left: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.primary-factors-list li,
+.additional-considerations-list li {
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+
+.confidence-explanation {
+  font-style: italic;
+  color: #666;
+}
+
+/* Factors Section */
+.prediction-factors-section {
+  margin-bottom: 2rem;
+}
+
+.factors-chart {
+  height: 300px;
+  margin-bottom: 1.5rem;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.factors-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+}
+
+.factor-item {
+  padding: 1rem;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+}
+
+.factor-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.factor-score {
+  font-weight: 700;
+}
+
+.score-max {
+  color: #999;
+  font-weight: normal;
+}
+
+.factor-bar {
+  height: 10px;
+  background-color: #eee;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+
+.factor-bar-fill {
+  height: 100%;
+  border-radius: 5px;
+}
+
+.factor-details {
+  font-size: 0.9rem;
+}
+
+.detail-item {
+  margin-bottom: 0.3rem;
+  color: #666;
+}
+
+/* Trading Parameters Section */
+.trading-parameters-section {
+  margin-bottom: 2rem;
+}
+
+.trading-params-content {
+  padding: 1rem;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+}
+
+.params-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.param-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.param-label {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 0.3rem;
+}
+
+.param-value {
+  font-weight: 700;
+}
+
+/* Sector Chart Section */
+.sector-chart-section {
+  margin-bottom: 2rem;
+}
+
+.sector-chart-container {
+  height: 300px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+/* Top Picks Section */
+.sector-top-picks-section {
+  margin-bottom: 2rem;
+}
+
+.top-picks-content {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.bullish-picks-detailed,
+.bearish-picks-detailed {
+  flex: 1;
+  min-width: 300px;
+}
+
+.picks-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.picks-table th,
+.picks-table td {
+  padding: 0.5rem;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+.picks-table th {
+  font-weight: 700;
+  color: #333;
+}
+
+.movement.bullish {
+  color: #28a745;
+}
+
+.movement.bearish {
+  color: #dc3545;
+}
+
+/* Model Accuracy Section */
+.model-accuracy-section {
+  margin-top: 3rem;
+  padding: 1.5rem;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+}
+
+.accuracy-stats {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.accuracy-stat {
+  flex: 1;
+  min-width: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 0.5rem;
+}
+
+.stat-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #007bff;
+}
+
+.accuracy-chart {
+  height: 300px;
+  background-color: white;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .prediction-grid,
+  .sector-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .prediction-controls {
+    flex-direction: column;
+  }
+  
+  .filters {
+    flex-direction: column;
+  }
+  
+  .summary-content,
+  .sector-summary-content,
+  .top-picks-content {
+    flex-direction: column;
+  }
+  
+  .factors-list {
+    grid-template-columns: 1fr;
+  }
+  
+  .params-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .detailed-prediction-container,
+  .detailed-sector-prediction-container {
+    padding: 1rem;
+  }
+}

@@ -1,0 +1,481 @@
+/**
+ * User Profile Styles for Trump Tariff Analysis Website
+ * 
+ * This stylesheet provides styles for user profiles, preferences,
+ * watchlists, and alert configurations.
+ */
+
+/* Profile Container */
+.profile-container {
+  position: fixed;
+  top: 10px;
+  right: 180px;
+  z-index: 1000;
+}
+
+.profile-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--panel-background);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  padding: 5px 10px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.profile-icon {
+  font-style: normal;
+  font-size: calc(16px * var(--font-size-multiplier));
+}
+
+.profile-name {
+  font-size: calc(14px * var(--font-size-multiplier));
+  color: var(--text-color);
+}
+
+/* Profile Dropdown */
+.profile-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 350px;
+  background-color: var(--panel-background);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  margin-top: 5px;
+  display: none;
+  z-index: 1001;
+}
+
+.profile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: calc(10px * var(--spacing-multiplier));
+  border-bottom: 1px solid var(--border-color);
+  background-color: var(--panel-header-background);
+}
+
+.profile-header h3 {
+  margin: 0;
+  font-size: calc(16px * var(--font-size-multiplier));
+  color: var(--text-color);
+}
+
+.profile-content {
+  padding: calc(15px * var(--spacing-multiplier));
+}
+
+/* Current Profile */
+.current-profile {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.profile-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.profile-avatar {
+  font-size: calc(32px * var(--font-size-multiplier));
+  color: var(--text-color);
+}
+
+.profile-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-username {
+  font-size: calc(16px * var(--font-size-multiplier));
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+.profile-last-login {
+  font-size: calc(12px * var(--font-size-multiplier));
+  color: var(--text-color);
+  opacity: 0.7;
+}
+
+.profile-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.profile-action-button {
+  background-color: var(--panel-background);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  color: var(--text-color);
+  cursor: pointer;
+  font-size: calc(14px * var(--font-size-multiplier));
+  padding: 8px 12px;
+  text-align: left;
+  transition: all 0.2s ease;
+}
+
+.profile-action-button:hover {
+  background-color: var(--secondary-color);
+  color: white;
+}
+
+.logout-button {
+  margin-top: 10px;
+  background-color: var(--accent-color);
+  color: white;
+}
+
+.logout-button:hover {
+  opacity: 0.9;
+}
+
+/* Login/Register Forms */
+.login-register {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.login-form, .register-form {
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  padding: calc(10px * var(--spacing-multiplier));
+}
+
+.login-form h4, .register-form h4 {
+  margin: 0 0 10px 0;
+  font-size: calc(16px * var(--font-size-multiplier));
+  color: var(--text-color);
+}
+
+.form-group {
+  margin-bottom: 10px;
+}
+
+.form-group label {
+  display: block;
+  font-size: calc(14px * var(--font-size-multiplier));
+  color: var(--text-color);
+  margin-bottom: 5px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 8px;
+  font-size: calc(14px * var(--font-size-multiplier));
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background-color: var(--panel-background);
+  color: var(--text-color);
+}
+
+.form-note {
+  font-size: calc(12px * var(--font-size-multiplier));
+  color: var(--text-color);
+  opacity: 0.7;
+}
+
+.guest-option {
+  text-align: center;
+}
+
+.guest-note {
+  font-size: calc(12px * var(--font-size-multiplier));
+  color: var(--text-color);
+  opacity: 0.7;
+  margin-top: 5px;
+}
+
+/* Modal */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+.modal-dialog {
+  width: 500px;
+  max-width: 90vw;
+  background-color: var(--panel-background);
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: calc(10px * var(--spacing-multiplier));
+  border-bottom: 1px solid var(--border-color);
+  background-color: var(--panel-header-background);
+}
+
+.modal-header h3 {
+  margin: 0;
+  font-size: calc(18px * var(--font-size-multiplier));
+  color: var(--text-color);
+}
+
+.modal-content {
+  padding: calc(15px * var(--spacing-multiplier));
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+/* Watchlist Manager */
+.watchlist-manager {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.watchlist-current, .watchlist-add {
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  padding: calc(10px * var(--spacing-multiplier));
+}
+
+.watchlist-current h4, .watchlist-add h4 {
+  margin: 0 0 10px 0;
+  font-size: calc(16px * var(--font-size-multiplier));
+  color: var(--text-color);
+}
+
+.watchlist-items {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.watchlist-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background-color: var(--panel-background);
+}
+
+.watchlist-item-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.watchlist-item-symbol {
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+.watchlist-item-name {
+  color: var(--text-color);
+  opacity: 0.7;
+}
+
+.remove-watchlist-item {
+  background-color: transparent;
+  border: none;
+  color: var(--accent-color);
+  cursor: pointer;
+  font-size: calc(18px * var(--font-size-multiplier));
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.empty-watchlist {
+  padding: 20px;
+  text-align: center;
+  color: var(--text-color);
+  opacity: 0.7;
+}
+
+.add-button {
+  background-color: var(--success-color);
+  color: white;
+}
+
+/* Alert Configurator */
+.alert-configurator {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.alerts-current, .alert-add {
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  padding: calc(10px * var(--spacing-multiplier));
+}
+
+.alerts-current h4, .alert-add h4 {
+  margin: 0 0 10px 0;
+  font-size: calc(16px * var(--font-size-multiplier));
+  color: var(--text-color);
+}
+
+.alert-items {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.alert-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background-color: var(--panel-background);
+}
+
+.alert-item-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.alert-item-symbol {
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+.alert-item-condition {
+  color: var(--text-color);
+}
+
+.alert-item-priority {
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: calc(12px * var(--font-size-multiplier));
+  color: white;
+}
+
+.alert-item-priority.high {
+  background-color: var(--error-color);
+}
+
+.alert-item-priority.medium {
+  background-color: var(--warning-color);
+}
+
+.alert-item-priority.low {
+  background-color: var(--success-color);
+}
+
+.remove-alert-item {
+  background-color: transparent;
+  border: none;
+  color: var(--accent-color);
+  cursor: pointer;
+  font-size: calc(18px * var(--font-size-multiplier));
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.empty-alerts {
+  padding: 20px;
+  text-align: center;
+  color: var(--text-color);
+  opacity: 0.7;
+}
+
+/* Form Actions */
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.form-button {
+  background-color: var(--panel-background);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  color: var(--text-color);
+  cursor: pointer;
+  font-size: calc(14px * var(--font-size-multiplier));
+  padding: 8px 16px;
+  transition: all 0.2s ease;
+}
+
+.save-button {
+  background-color: var(--success-color);
+  color: white;
+}
+
+.cancel-button {
+  background-color: var(--panel-background);
+}
+
+.form-button:hover {
+  opacity: 0.9;
+}
+
+/* Edit Profile Form */
+.edit-profile-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Dark Mode Adjustments */
+body.dark-mode .profile-toggle,
+body.dark-mode .profile-dropdown,
+body.dark-mode .modal-dialog {
+  background-color: var(--panel-background);
+  color: var(--text-color);
+}
+
+body.dark-mode .form-control {
+  background-color: var(--panel-background);
+  color: var(--text-color);
+  border-color: var(--border-color);
+}
+
+body.dark-mode .profile-action-button,
+body.dark-mode .form-button.cancel-button {
+  background-color: var(--panel-background);
+  color: var(--text-color);
+  border-color: var(--border-color);
+}
+
+body.dark-mode .profile-action-button:hover,
+body.dark-mode .form-button.cancel-button:hover {
+  background-color: var(--secondary-color);
+  color: white;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .profile-container {
+    right: 10px;
+  }
+  
+  .profile-dropdown {
+    width: 300px;
+  }
+}

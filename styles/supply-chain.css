@@ -1,0 +1,846 @@
+/**
+ * Supply Chain Styles for Trump Tariff Analysis Website
+ * 
+ * This stylesheet provides styles for supply chain analysis tools,
+ * including country, product, and company analysis.
+ */
+
+/* Supply Chain Container */
+.supply-chain-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  background-color: var(--background-color);
+}
+
+/* Supply Chain Header */
+.supply-chain-header {
+  margin-bottom: 20px;
+}
+
+.supply-chain-header h2 {
+  margin: 0 0 10px 0;
+  font-size: calc(24px * var(--font-size-multiplier));
+  color: var(--text-color);
+}
+
+.supply-chain-description {
+  font-size: calc(16px * var(--font-size-multiplier));
+  color: var(--text-color);
+  opacity: 0.8;
+}
+
+/* Supply Chain Tabs */
+.supply-chain-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--border-color);
+  background-color: var(--panel-background);
+}
+
+.supply-chain-tab {
+  padding: 12px 20px;
+  font-size: calc(16px * var(--font-size-multiplier));
+  background-color: transparent;
+  border: none;
+  border-bottom: 3px solid transparent;
+  color: var(--text-color);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.supply-chain-tab:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.supply-chain-tab.active {
+  border-bottom-color: var(--secondary-color);
+  font-weight: bold;
+}
+
+/* Supply Chain Content */
+.supply-chain-content {
+  background-color: var(--panel-background);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  padding: 20px;
+}
+
+/* Overview Tab */
+.supply-chain-overview {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.overview-section {
+  background-color: rgba(0, 0, 0, 0.02);
+  border-radius: 4px;
+  padding: 20px;
+}
+
+.overview-section h3 {
+  margin: 0 0 15px 0;
+  font-size: calc(18px * var(--font-size-multiplier));
+  color: var(--text-color);
+}
+
+/* Impact Summary */
+.impact-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 15px;
+}
+
+.impact-card {
+  background-color: var(--panel-background);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.impact-icon {
+  font-size: calc(32px * var(--font-size-multiplier));
+  margin-bottom: 10px;
+}
+
+.impact-title {
+  font-size: calc(16px * var(--font-size-multiplier));
+  font-weight: bold;
+  color: var(--text-color);
+  margin-bottom: 5px;
+}
+
+.impact-value {
+  font-size: calc(20px * var(--font-size-multiplier));
+  font-weight: bold;
+  color: var(--text-color);
+  margin-bottom: 10px;
+}
+
+.impact-description {
+  font-size: calc(14px * var(--font-size-multiplier));
+  color: var(--text-color);
+  opacity: 0.8;
+}
+
+/* Vulnerabilities Chart */
+.vulnerabilities-chart {
+  height: 300px;
+  margin-bottom: 15px;
+}
+
+.vulnerabilities-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.legend-color {
+  width: 15px;
+  height: 15px;
+  border-radius: 3px;
+}
+
+.legend-label {
+  font-size: calc(14px * var(--font-size-multiplier));
+  color: var(--text-color);
+}
+
+/* Tables */
+.companies-table,
+.routes-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.companies-table th,
+.companies-table td,
+.routes-table th,
+.routes-table td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.companies-table th,
+.routes-table th {
+  font-weight: bold;
+  color: var(--text-color);
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+.companies-table td,
+.routes-table td {
+  color: var(--text-color);
+}
+
+/* Risk Classes */
+.very-high-risk {
+  color: #e74c3c;
+  font-weight: bold;
+}
+
+.high-risk {
+  color: #e67e22;
+  font-weight: bold;
+}
+
+.medium-high-risk {
+  color: #f39c12;
+  font-weight: bold;
+}
+
+.medium-risk {
+  color: #f1c40f;
+  font-weight: bold;
+}
+
+.low-risk {
+  color: #2ecc71;
+  font-weight: bold;
+}
+
+/* Analysis Filters */
+.analysis-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 20px;
+  padding: 15px;
+  background-color: rgba(0, 0, 0, 0.02);
+  border-radius: 4px;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.filter-group label {
+  font-size: calc(14px * var(--font-size-multiplier));
+  color: var(--text-color);
+}
+
+.filter-select {
+  padding: 8px 12px;
+  font-size: calc(14px * var(--font-size-multiplier));
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background-color: var(--panel-background);
+  color: var(--text-color);
+  min-width: 150px;
+}
+
+/* Country Analysis */
+.country-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.country-card {
+  background-color: var(--panel-background);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.country-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background-color: rgba(0, 0, 0, 0.03);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.country-header h3 {
+  margin: 0;
+  font-size: calc(18px * var(--font-size-multiplier));
+  color: var(--text-color);
+}
+
+.country-exposure {
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: calc(12px * var(--font-size-multiplier));
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.country-details {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.country-detail {
+  display: flex;
+  justify-content: space-between;
+}
+
+.detail-label {
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+.detail-value {
+  color: var(--text-color);
+}
+
+.country-trade {
+  display: flex;
+  padding: 0 15px 15px;
+  gap: 20px;
+}
+
+.trade-section {
+  flex: 1;
+}
+
+.trade-section h4 {
+  margin: 0 0 10px 0;
+  font-size: calc(14px * var(--font-size-multiplier));
+  color: var(--text-color);
+}
+
+.trade-list {
+  margin: 0;
+  padding-left: 20px;
+  color: var(--text-color);
+}
+
+.view-details-button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: var(--secondary-color);
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: calc(14px * var(--font-size-multiplier));
+  transition: all 0.2s ease;
+}
+
+.view-details-button:hover {
+  opacity: 0.9;
+}
+
+/* Product Analysis */
+.product-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.product-card {
+  background-color: var(--panel-background);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.product-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background-color: rgba(0, 0, 0, 0.03);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.product-header h3 {
+  margin: 0;
+  font-size: calc(18px * var(--font-size-multiplier));
+  color: var(--text-color);
+}
+
+.product-sensitivity {
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: calc(12px * var(--font-size-multiplier));
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.product-details {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.product-trade {
+  display: flex;
+  padding: 0 15px 15px;
+  gap: 20px;
+}
+
+.country-tags,
+.company-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.country-tag,
+.company-tag {
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: calc(12px * var(--font-size-multiplier));
+  background-color: rgba(0, 0, 0, 0.05);
+  color: var(--text-color);
+}
+
+.product-companies,
+.product-impact {
+  padding: 0 15px 15px;
+}
+
+.product-companies h4,
+.product-impact h4 {
+  margin: 0 0 10px 0;
+  font-size: calc(14px * var(--font-size-multiplier));
+  color: var(--text-color);
+}
+
+.product-impact p {
+  margin: 0;
+  font-size: calc(14px * var(--font-size-multiplier));
+  color: var(--text-color);
+}
+
+/* Company Analysis */
+.company-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.company-card {
+  background-color: var(--panel-background);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.company-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background-color: rgba(0, 0, 0, 0.03);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.company-title {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.company-title h3 {
+  margin: 0;
+  font-size: calc(18px * var(--font-size-multiplier));
+  color: var(--text-color);
+}
+
+.company-name {
+  font-size: calc(14px * var(--font-size-multiplier));
+  color: var(--text-color);
+  opacity: 0.8;
+}
+
+.company-risk {
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: calc(12px * var(--font-size-multiplier));
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.company-details {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.company-exposures,
+.company-impact {
+  padding: 0 15px 15px;
+}
+
+.company-exposures h4,
+.company-impact h4 {
+  margin: 0 0 10px 0;
+  font-size: calc(14px * var(--font-size-multiplier));
+  color: var(--text-color);
+}
+
+.exposure-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.exposure-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.exposure-label {
+  width: 50px;
+  font-size: calc(14px * var(--font-size-multiplier));
+  color: var(--text-color);
+}
+
+.exposure-meter {
+  flex: 1;
+  height: 10px;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.exposure-value {
+  height: 100%;
+  border-radius: 5px;
+}
+
+.exposure-text {
+  width: 80px;
+  font-size: calc(12px * var(--font-size-multiplier));
+  text-align: right;
+}
+
+.company-impact p {
+  margin: 0;
+  font-size: calc(14px * var(--font-size-multiplier));
+  color: var(--text-color);
+}
+
+/* Modal */
+.country-detail-modal,
+.product-detail-modal,
+.company-detail-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  width: 800px;
+  max-width: 90%;
+  max-height: 90vh;
+  background-color: var(--panel-background);
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background-color: var(--panel-header-background);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.modal-header h3 {
+  margin: 0;
+  font-size: calc(20px * var(--font-size-multiplier));
+  color: var(--text-color);
+}
+
+.close-modal {
+  background: none;
+  border: none;
+  font-size: calc(24px * var(--font-size-multiplier));
+  color: var(--text-color);
+  cursor: pointer;
+}
+
+.modal-body {
+  padding: 20px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.modal-section {
+  margin-bottom: 25px;
+}
+
+.modal-section:last-child {
+  margin-bottom: 0;
+}
+
+.modal-section h4 {
+  margin: 0 0 15px 0;
+  font-size: calc(18px * var(--font-size-multiplier));
+  color: var(--text-color);
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 15px;
+}
+
+.detail-item {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.product-columns {
+  display: flex;
+  gap: 30px;
+}
+
+.product-column {
+  flex: 1;
+}
+
+.product-column h5 {
+  margin: 0 0 10px 0;
+  font-size: calc(16px * var(--font-size-multiplier));
+  color: var(--text-color);
+}
+
+.product-list {
+  margin: 0;
+  padding-left: 20px;
+  color: var(--text-color);
+}
+
+.detail-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.detail-table th,
+.detail-table td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.detail-table th {
+  font-weight: bold;
+  color: var(--text-color);
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+.detail-table td {
+  color: var(--text-color);
+}
+
+.company-grid,
+.country-grid,
+.market-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 10px;
+}
+
+.company-item,
+.country-item,
+.market-item {
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.02);
+  border-radius: 4px;
+}
+
+.company-symbol,
+.country-code,
+.market-code {
+  font-weight: bold;
+  font-size: calc(16px * var(--font-size-multiplier));
+  color: var(--text-color);
+  margin-bottom: 5px;
+}
+
+.company-name,
+.country-name,
+.market-name {
+  font-size: calc(14px * var(--font-size-multiplier));
+  color: var(--text-color);
+  opacity: 0.8;
+  margin-bottom: 5px;
+}
+
+.impact-analysis {
+  background-color: rgba(0, 0, 0, 0.02);
+  border-radius: 4px;
+  padding: 15px;
+}
+
+.impact-analysis p {
+  margin: 0 0 15px 0;
+  color: var(--text-color);
+}
+
+.impact-analysis ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.impact-analysis li {
+  margin-bottom: 10px;
+  color: var(--text-color);
+}
+
+.impact-analysis li:last-child {
+  margin-bottom: 0;
+}
+
+.supply-chain-grid {
+  display: flex;
+  gap: 20px;
+}
+
+.supply-chain-column {
+  flex: 1;
+}
+
+.supply-chain-column h5 {
+  margin: 0 0 10px 0;
+  font-size: calc(16px * var(--font-size-multiplier));
+  color: var(--text-color);
+}
+
+.exposure-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.exposure-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.exposure-country {
+  width: 50px;
+  font-size: calc(14px * var(--font-size-multiplier));
+  color: var(--text-color);
+}
+
+.related-products {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+}
+
+.related-product {
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.02);
+  border-radius: 4px;
+}
+
+.product-name {
+  font-weight: bold;
+  font-size: calc(16px * var(--font-size-multiplier));
+  color: var(--text-color);
+  margin-bottom: 5px;
+}
+
+.product-category {
+  font-size: calc(14px * var(--font-size-multiplier));
+  color: var(--text-color);
+  opacity: 0.8;
+  margin-bottom: 5px;
+}
+
+.mitigation-strategies {
+  background-color: rgba(0, 0, 0, 0.02);
+  border-radius: 4px;
+  padding: 15px;
+}
+
+.mitigation-strategies p {
+  margin: 0;
+  color: var(--text-color);
+}
+
+/* Dark Mode Adjustments */
+body.dark-mode .overview-section,
+body.dark-mode .analysis-filters,
+body.dark-mode .impact-analysis,
+body.dark-mode .mitigation-strategies,
+body.dark-mode .related-product,
+body.dark-mode .company-item,
+body.dark-mode .country-item,
+body.dark-mode .market-item {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+body.dark-mode .country-header,
+body.dark-mode .product-header,
+body.dark-mode .company-header,
+body.dark-mode .detail-table th {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+body.dark-mode .country-tag,
+body.dark-mode .company-tag,
+body.dark-mode .country-exposure,
+body.dark-mode .product-sensitivity,
+body.dark-mode .company-risk {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .supply-chain-tabs {
+    flex-wrap: wrap;
+  }
+  
+  .supply-chain-tab {
+    flex: 1;
+    min-width: 120px;
+    text-align: center;
+  }
+  
+  .impact-summary {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+  
+  .country-list,
+  .product-list,
+  .company-list {
+    grid-template-columns: 1fr;
+  }
+  
+  .product-columns,
+  .supply-chain-grid {
+    flex-direction: column;
+  }
+  
+  .detail-grid {
+    grid-template-columns: 1fr;
+  }
+}
